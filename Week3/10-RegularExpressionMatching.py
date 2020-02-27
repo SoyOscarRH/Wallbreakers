@@ -1,5 +1,6 @@
-def isMatch(self, s: str, p: str) -> bool:   
-        m, n= len(s), len(p) 
+class Solution:
+    def isMatch(self, s: str, p: str) -> bool:
+        m, n = len(s), len(p) 
         dp = [[False]*(n+1) for _ in range (m+1)] #m*n
         dp[0][0]=True
         
@@ -16,4 +17,5 @@ def isMatch(self, s: str, p: str) -> bool:
                         dp[i+1][j+1] = dp[i+1][j-1]
                     else:
                         dp[i+1][j+1] = (dp[i+1][j] or dp[i+1][j-1] or dp[i][j+1])
+        
         return dp[m][n]
